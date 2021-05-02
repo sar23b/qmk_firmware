@@ -21,6 +21,8 @@ enum planck_layers {
 enum planck_keycodes {
     NUMPAD = SAFE_RANGE,
     MOUSET,
+    MOUSE,
+    EXT_MOS,
     EXT_NUM,
     EXT_MSE
 };
@@ -29,7 +31,6 @@ enum planck_keycodes {
 #define RAISE MO(_RAISE)
 #define SUPENT LGUI_T(KC_ENT)
 #define ADJUST MO(_ADJUST)
-#define MOUSE MO(_MOUSE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QUERTY] = LAYOUT_planck_1x2uC( 
@@ -40,13 +41,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_LOWER] = LAYOUT_planck_1x2uC( //missing keys
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-    _______, KC_QUOT, KC_LBRC, KC_RBRC, KC_UNDS, KC_PIPE, XXXXXXX, KC_EQL,  KC_PLUS, KC_MINS, MOUSE, XXXXXXX,
+    _______, KC_QUOT, KC_LBRC, KC_RBRC, KC_UNDS, KC_PIPE, XXXXXXX, KC_EQL,  KC_PLUS, KC_MINS, XXXXXXX, XXXXXXX,
     _______, KC_BSLS, KC_LCBR, KC_RCBR, KC_TILD, XXXXXXX, XXXXXXX, KC_DQUO, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     XXXXXXX, _______, XXXXXXX, _______, _______, KC_GRV,           _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_RAISE] = LAYOUT_planck_1x2uC( //navigation
     XXXXXXX, KC_MPRV, KC_UP,   KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_LGUI,
+    _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MOUSE, KC_LGUI,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     XXXXXXX, KC_BRID, KC_BRIU, _______, _______, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
@@ -69,16 +70,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT,          XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
     ),
     [_MOUSET] = LAYOUT_planck_1x2uC( //2nd mouse layer for testing
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, XXXXXXX, KC_WH_U, KC_WH_L,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_WH_D, KC_WH_R,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_MS_U, KC_BTN2, KC_WH_U, KC_WH_L,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_WH_R,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
     ),
     [_MOUSE] = LAYOUT_planck_1x2uC( 
     XXXXXXX, KC_BTN1, KC_BTN3, KC_MS_U, KC_BTN2, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, XXXXXXX,
-    KC_WH_U, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_WH_L, KC_BTN4, KC_BTN5, XXXXXXX, _______, XXXXXXX,
+    KC_WH_U, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_WH_L, KC_BTN4, KC_BTN5, XXXXXXX, XXXXXXX, EXT_MOS,
     KC_WH_D, KC_WH_L, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          KC_BTN1, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     )
     /*
     [X] = LAYOUT_planck_1x2uC(
@@ -160,19 +161,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
     
-    case MO(_MOUSE):
+    case MOUSE:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
                 stop_all_notes();
                 PLAY_SONG(on_short);
             #endif
-        } else {
+            layer_off(_RAISE);
+            layer_off(_LOWER);
+            layer_off(_KEEP);
+            layer_off(_ADJUST);
+            layer_on(_MOUSE);
+        }
+        return false;
+        break;
+
+    case EXT_MOS:
+        if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
                 stop_all_notes();
                 PLAY_SONG(off_short);
             #endif
+            layer_off(_MOUSE);
         }
-        return true;
+        return false;
         break;
 
     case EXT_NUM:
