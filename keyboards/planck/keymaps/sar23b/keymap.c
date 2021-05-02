@@ -21,15 +21,15 @@ enum planck_layers {
 enum planck_keycodes {
     NUMPAD = SAFE_RANGE,
     MOUSET,
-    MOUSE,
     EXT_NUM,
-    EXT_MSE,
+    EXT_MSE
 };
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define SUPENT LGUI_T(KC_ENT)
 #define ADJUST MO(_ADJUST)
+#define MOUSE MO(_MOUSE)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QUERTY] = LAYOUT_planck_1x2uC( 
@@ -75,8 +75,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
     ),
     [_MOUSE] = LAYOUT_planck_1x2uC( 
-    XXXXXXX, KC_BTN1, KC_BTN3, KC_MS_U, KC_BTN2, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, _______, XXXXXXX,
-    KC_WH_U, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_WH_L, KC_BTN4, KC_BTN5, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, KC_BTN1, KC_BTN3, KC_MS_U, KC_BTN2, XXXXXXX, XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, XXXXXXX,
+    KC_WH_U, KC_BTN1, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_WH_L, KC_BTN4, KC_BTN5, XXXXXXX, _______, XXXXXXX,
     KC_WH_D, KC_WH_L, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, KC_WH_R, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     )
@@ -90,6 +90,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 };
 
+#ifdef AUDIO_ENABLE
+  float plover_song[][2]     = SONG(PLOVER_SOUND);
+  float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
+  float on_short[][2] = SONG(STARTUP_SOUND);
+  float off_short[][2] = SONG(GOODBYE_SOUND);
+#endif
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _KEEP);
     return state;
@@ -99,6 +106,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case NUMPAD:
         if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(on_short);
+            #endif
             layer_off(_RAISE);
             layer_off(_LOWER);
             layer_off(_KEEP);
@@ -110,6 +121,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     
     case MOUSET:
         if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(plover_song);
+            #endif
             layer_off(_RAISE);
             layer_off(_LOWER);
             layer_off(_KEEP);
@@ -119,17 +134,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
     
-    case MOUSE:
+    case MO(_MOUSE):
         if (record->event.pressed) {
-            layer_on(_MOUSE);
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(on_short);
+            #endif
         } else {
-            layer_off(_MOUSE);
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(off_short);
+            #endif
         }
-        return false;
+        return true;
         break;
 
     case EXT_NUM:
         if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(off_short);
+            #endif
             layer_off(_NUMPAD);
         }
         return false;
@@ -137,6 +162,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     
     case EXT_MSE:
         if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(plover_gb_song);
+            #endif
             layer_off(_MOUSET);
         }
         return false;
