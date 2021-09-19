@@ -1,16 +1,5 @@
 /* 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * trying out different featuers of qmk
  */
 
 #include QMK_KEYBOARD_H
@@ -39,6 +28,18 @@ enum planck_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
+//need to fix to proper keyboad matrix as seen in rev6.h
+const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
+  {{11, 0}, {10, 0}, {9, 0}, {8, 0}, {7, 0}, {6, 0}},
+  {{11, 1}, {10, 1}, {9, 1}, {8, 1}, {7, 1}, {6, 1}},
+  {{11, 2}, {10, 2}, {9, 2}, {8, 2}, {7, 2}, {6, 2}},
+  {{11, 3}, {10, 3}, {9, 3}, {8, 3}, {7, 3}, {6, 3}},
+  {{5, 0}, {4, 0}, {3, 0}, {2, 0}, {1, 0}, {0, 0}},
+  {{5, 1}, {4, 1}, {3, 1}, {2, 1}, {1, 1}, {0, 1}},
+  {{5, 2}, {4, 2}, {3, 2}, {2, 2}, {1, 2}, {0, 2}},
+  {{5, 3}, {4, 3}, {3, 3}, {2, 3}, {1, 3}, {0, 3}}
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
@@ -56,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-    SH_TT,   KC_LGUI, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,  KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SH_TT
+    SH_TT,   KC_LGUI, XXXXXXX, XXXXXXX, XXXXXXX, KC_SPC,  KC_SPC,  XXXXXXX, XXXXXXX, XXXXXXX, RESET,   SH_TT
 ),
 
 /* Lower
