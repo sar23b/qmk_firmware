@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   \  |   {  |   }  |   ~  | XXXX | XXXX |   "  | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX |      | XXXX |      |      |             |      | Next | XXXX | XXXX | XXXX |
+ * | XXXX |      | XXXX |      |      |             |      | XXXX | XXXX | XXXX | XXXX |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_1x2uC( //missing keys
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Vol- | Vol+ | Mute | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | Next | Vol- | Vol+ | Play |
+ * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | XXXX | XXXX | XXXX | XXXX | 
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_1x2uC( //navigation
@@ -107,19 +107,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust 
  * ,-----------------------------------------------------------------------------------.
- * | XXXX |  F1  |  F2  |  F3  |  F4  | XXXX | XXXX | AudOn| AudOf| XXXX | XXXX | Sleep|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Aud+ | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F5  |  F6  |  F7  |  F8  | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
+ * |      | XXXX | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | Aud- | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F9  |  F10 |  F11 |  F12 | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
+ * |      | XXXX | XXXX | XXXX | XXXX | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX |      | XXXX |      | XXXX |     RGB     | Mode+| Mode-| XXXX | Reset|      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_1x2uC( //keeb control
-    XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, AU_ON,   AU_OFF,   XXXXXXX, XXXXXXX, KC_SLEP,
-    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
-    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, AU_ON,   KC_SLEP,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, AU_OFF,  KC_WAKE,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
     XXXXXXX, _______, XXXXXXX, _______, XXXXXXX, RGB_TOG,          RGB_MOD, RGB_RMOD, XXXXXXX, RESET,   _______
 ),
 
