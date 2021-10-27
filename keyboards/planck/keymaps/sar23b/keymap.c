@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Play |  GUI | Esc  | Alt  |Lower |    Space    |Raise | AltG | Mouse| Num  |Adju  |
+ * | Play |  GUI | Esc  | Alt  |Lower |    Space    |Raise | AltG | Mouse| Num  | Adju |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_1x2uC( 
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   \  |   {  |   }  |   ~  | XXXX | XXXX |   "  | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX |      | XXXX |      |      |             |      | Next | XXXX | XXXX | XXXX |
+ * | XXXX |      | XXXX |      |      |      `      |      |      | XXXX | XXXX | XXXX |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_planck_1x2uC( //missing keys
@@ -73,16 +73,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | XXXX | Next |  Up  | Prev | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Left | Down | Rigth| XXXX | XXXX | Left | Down |  Up  |Right | Mouse|  GUI |
+ * |      | Left | Down | Rigth| XXXX | XXXX | Left | Down |  Up  |Right | XXXX |  GUI |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Vol- | Vol+ | Mute | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | Next | Vol- | Vol+ | Play |
+ * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | XXXX | XXXX | XXXX | XXXX |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_1x2uC( //navigation
     XXXXXXX, KC_MPRV, KC_UP,   KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MOUSE,   KC_LGUI,
+    _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_LGUI,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     XXXXXXX, KC_BRID, KC_BRIU, _______, _______, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT,          XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
 ),
 
-/* Numpad
+/* Mouse 
  * ,-----------------------------------------------------------------------------------.
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M3  |  MU  |  M2  |  MWU |  MWL |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
