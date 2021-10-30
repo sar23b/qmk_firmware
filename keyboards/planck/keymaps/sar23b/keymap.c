@@ -16,7 +16,8 @@ enum planck_layers {
   _KEEP,
   _ADJUST,
   _NUMPAD,
-  _MOUSE
+  _MOUSE,
+  _UNICODE
 };
 
 enum planck_keycodes {
@@ -24,6 +25,36 @@ enum planck_keycodes {
   MOUSE,
   EXT_NUM,
   EXT_MSE
+};
+
+enum unicode_names {
+    SNEK,
+    ZWJ,
+    VS16,
+    FLAG,
+    TRANS,
+    GAY,
+    GLITT,
+    PHEART,
+    UPDF,
+    NMOF,
+    FLKE,
+    SNOW
+};
+
+const uint32_t PROGMEM unicode_map[] = {
+    [ZWJ] = 0x200D, // Zero Width Joiner
+    [VS16] = 0xFE0F, // Variation Selector-16
+    [SNEK]  = 0x1F40D, // 🐍
+    [FLAG] = 0x1F3F3, // 🏳
+    [TRANS] = 0x26A7, // ⚧
+    [GAY] = 0x1F308, // 🌈
+    [GLITT] = 0x2728, // ✨
+    [PHEART] = 0x1F49C, // 💜
+    [UPDF] = 0x1F643, // 🙃
+    [NMOF] = 0x1F636, // 😶
+    [FLKE] = 0x2744, // ❄
+    [SNOW] = 0x1F328 // 🌨
 };
 
 #define LOWER MO(_LOWER)
@@ -77,14 +108,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Vol- | Vol+ | Mute | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX | Disp+| Disp-|      |      |     XXXX    |      | XXXX | XXXX | XXXX |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_1x2uC( //navigation
     XXXXXXX, KC_MPRV, KC_UP,   KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_LGUI,
     _______, KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    XXXXXXX, KC_BRID, KC_BRIU, _______, _______, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, KC_BRID, KC_BRIU, _______, _______, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
 ),
 
 /* Keep (Lower + Raise)
@@ -107,20 +138,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust 
  * ,-----------------------------------------------------------------------------------.
- * | XXXX |  F1  |  F2  |  F3  |  F4  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Sleep|
+ * | XXXX |  F1  |  F2  |  F3  |  F4  | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  F5  |  F6  |  F7  |  F8  | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  F9  |  F10 |  F11 |  F12 | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX |      | XXXX |      | XXXX |     RGB     | Mode+| Mode-| XXXX | Reset|      |
+ * | XXXX |      | XXXX |      | XXXX |     RGB     |      | XXXX | XXXX | Reset|      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_1x2uC( //keeb control
-    XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, KC_SLEP,
+    XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
     _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
     _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
-    XXXXXXX, _______, XXXXXXX, _______, XXXXXXX, RGB_TOG,          RGB_MOD, RGB_RMOD, XXXXXXX, RESET,   _______
+    XXXXXXX, _______, XXXXXXX, _______, XXXXXXX, RGB_TOG,          _______, XXXXXXX,  XXXXXXX, RESET,   _______
 ),
 
 /* Numpad
@@ -152,11 +183,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | XXXX | XXXX | XXXX | XXXX | XXXX |      M1     |  M1  | Acl3 | Exit | Acl1 | Acl2 |
  * `-----------------------------------------------------------------------------------'
  */
-[_MOUSE] = LAYOUT_planck_1x2uC( //2nd mouse layer for testing
+[_MOUSE] = LAYOUT_planck_1x2uC( //mouse layer 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_MS_U, KC_BTN2, KC_WH_U, KC_WH_L,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_WH_R,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
+),
+
+/* Unicode
+ * ,-----------------------------------------------------------------------------------.
+ * | XXXX |  ⚧   |  ✨  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | VS16 |  🌈  |  💜  |  ❄   |  🙃  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  ZWJ |  🏳  |  🐍  |  🌨  |  😶  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    |      | XXXX | XXXX | XXXX |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_UNICODE] = LAYOUT_planck_1x2uC( //unicode char layer
+    XXXXXXX, X(TRANS), X(GLITT),  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(VS16), X(GAY),   X(PHEART), X(FLKE), X(UPDF), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(ZWJ),  X(FLAG),  X(SNEK),   X(SNOW), X(NMOF), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
 )
 
 };
@@ -170,6 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _KEEP);
+    state = update_tri_layer_state(state, _ADJUST, _RAISE, _UNICODE);
     switch (get_highest_layer(state)) {
     case _RAISE:
         rgblight_setrgb (0x00, 0x00, 0xFF);
@@ -188,6 +238,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         break;
     case _MOUSE:
         rgblight_setrgb (0xFF,  0x00, 0xFF);
+        break;
+    case _UNICODE:
+        rgblight_setrgb (0x00, 0xFF, 0x00);
         break;
     default: //  for any other layers, or the default layer
         rgblight_setrgb (0x00,  0x00, 0x00);
@@ -253,41 +306,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-/*
-bool muse_mode = false;
-uint8_t last_muse_note = 0;
-uint16_t muse_counter = 0;
-uint8_t muse_offset = 70;
-uint16_t muse_tempo = 50;
-
-void matrix_scan_user(void) {
-#ifdef AUDIO_ENABLE
-    if (muse_mode) {
-        if (muse_counter == 0) {
-            uint8_t muse_note = muse_offset + SCALE[muse_clock_pulse()];
-            if (muse_note != last_muse_note) {
-                stop_note(compute_freq_for_midi_note(last_muse_note));
-                play_note(compute_freq_for_midi_note(muse_note), 0xF);
-                last_muse_note = muse_note;
-            }
-        }
-        muse_counter = (muse_counter + 1) % muse_tempo;
-    } else {
-        if (muse_counter) {
-            stop_all_notes();
-            muse_counter = 0;
-        }
-    }
-#endif
-}
-
-bool music_mask_user(uint16_t keycode) {
-  switch (keycode) {
-    case RAISE:
-    case LOWER:
-      return false;
-    default:
-      return true;
-  }
-}
-*/
