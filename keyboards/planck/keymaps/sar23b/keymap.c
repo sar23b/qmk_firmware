@@ -63,6 +63,9 @@ const uint32_t PROGMEM unicode_map[] = {
 #define RAISE MO(_RAISE)
 #define SUPENT LGUI_T(KC_ENT)
 #define ADJUST MO(_ADJUST)
+#define COPY LCTL(KC_C)
+#define CUT LCTL(KC_X)
+#define PASTE LCTL(KC_V)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -158,20 +161,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Numpad
  * ,-----------------------------------------------------------------------------------.
- * | Lock | XXXX |   7  |   8  |   9  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | Tab  | XXXX |   7  |   8  |   9  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX |   *  |   4  |   5  |   6  |   +  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Bksp |   /  |   1  |   2  |   3  |   -  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX |   .  |   0  |     Ent     | XXXX | XXXX | XXXX | Exit | XXXX |
+ * | Lock | XXXX | XXXX |   .  |   0  |     Ent     | XXXX | XXXX | XXXX | Exit | XXXX |
  * `-----------------------------------------------------------------------------------'
  */
 [_NUMPAD] = LAYOUT_planck_1x2uC( 
-    KC_NLCK, XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_TAB,  XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, KC_PAST, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_BSPC, KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT,          XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
+    KC_NLCK, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT,          XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
 ),
 
 /* Mouse 
@@ -180,16 +183,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  ML  |  MD  |  MR  |  MWD |  MWR |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M4  |  M5  | XXXX | XXXX | XXXX |
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M4  |  M5  | CUT  | COPY | PASTE|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX |      M1     |  M1  | Acl3 | Exit | Acl1 | Acl2 |
+ * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    |  M1  | Acl3 | Exit | Acl1 | Acl2 |
  * `-----------------------------------------------------------------------------------'
  */
 [_MOUSE] = LAYOUT_planck_1x2uC( //mouse layer 
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_MS_U, KC_BTN2, KC_WH_U, KC_WH_L,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_WH_R,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1,          KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, CUT,     COPY,    PASTE,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
 ),
 
 /* Unicode
