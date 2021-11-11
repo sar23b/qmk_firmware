@@ -10,13 +10,15 @@
 
 
 enum planck_layers {
+  // basic layers
   _QWERTY,
   _LOWER,
   _RAISE,
-  _KEEP,
   _ADJUST,
   _NUMPAD,
   _MOUSE,
+  // stage 2 layer
+  _KEEP,
   _UNICODE
 };
 
