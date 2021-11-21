@@ -41,7 +41,13 @@ enum unicode_names {
     UPDF,
     NMOF,
     FLKE,
-    SNOW
+    SNOW,
+    UNICRN,
+    PENGU,
+    SAUWIA,
+    DOLPI,
+    WHALE,
+    CATPIL
 };
 
 const uint32_t PROGMEM unicode_map[] = {
@@ -56,7 +62,13 @@ const uint32_t PROGMEM unicode_map[] = {
     [UPDF] = 0x1F643, // 🙃
     [NMOF] = 0x1F636, // 😶
     [FLKE] = 0x2744, // ❄
-    [SNOW] = 0x1F328 // 🌨
+    [SNOW] = 0x1F328, // 🌨
+    [UNICRN] = 0x1f984, // 🦄
+    [PENGU] = 0x1f427, // 🐧
+    [SAUWIA] = 0x1f995, // 🦕
+    [DOLPI] = 0x1f42c, // 🐬
+    [WHALE] = 0x1f40b, // 🐋
+    [CATPIL] = 0x1f41b // 🐛
 };
 
 #define LOWER MO(_LOWER)
@@ -197,20 +209,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Unicode
  * ,-----------------------------------------------------------------------------------.
- * | XXXX |  ⚧   |  ✨  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | VS16 |  🌈  |  💜  |  ❄   |  🙃  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  ZWJ |  🏳  |  🐍  |  🌨  |  😶  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    |      | XXXX | XXXX | XXXX |      |
+ * | Shift| XXXX | XXXX | XXXX | XXXX |    🐬/🐋    |      | XXXX | XXXX | XXXX |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_UNICODE] = LAYOUT_planck_1x2uC( //unicode char layer
-    XXXXXXX, X(TRANS), X(GLITT),  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(VS16), X(GAY),   X(PHEART), X(FLKE), X(UPDF), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(ZWJ),  X(FLAG),  X(SNEK),   X(SNOW), X(NMOF), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX,  XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX,          _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
+    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(ZWJ),  X(FLAG),  X(SNEK),   X(SNOW),   X(NMOF),   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XP(DOLPI,WHALE),    _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
 )
 
 };
