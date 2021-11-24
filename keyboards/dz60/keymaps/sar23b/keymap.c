@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |   Bksp  |   Del   |   XXXX  |                 Ent                  |  XXXX  |  XXXX  |  NUM | XXXX | 
  * `----------------------------------------------------------------------------------------------------'
  */
-[_NUM] = LAYOUT_60_ansi(
+[_NUMPAD] = LAYOUT_60_ansi(
   KC_NLCK, KC_PSLS, KC_PSLS, KC_PEQL, KC_PDOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_PAST, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_PPLS, KC_P4,   KC_P5,   KC_P6,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
