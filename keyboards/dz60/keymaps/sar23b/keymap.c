@@ -73,11 +73,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_60_ansi(
-    KC_ESC,  RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
-    XXXXXXX, RGB_TOG, RGB_HUI, RGB_HUD, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
-    XXXXXXX, XXXXXXX, RGB_SAI, RGB_SAD, RGB_SPI, RGB_SPD,  XXXXXXX, RGB_VAI, RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
-    XXXXXXX, XXXXXXX, RGB_VAI, RGB_VAD, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  RESET, _______
+  KC_ESC,  RGB_M_P, RGB_M_B, RGB_M_R, RGB_M_SW, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
+  XXXXXXX, RGB_TOG, RGB_HUI, RGB_HUD, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
+  XXXXXXX, XXXXXXX, RGB_SAI, RGB_SAD, RGB_SPI, RGB_SPD,  XXXXXXX, RGB_VAI, RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
+  XXXXXXX, XXXXXXX, RGB_VAI, RGB_VAD, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  RESET, _______
 ),
 /* Numpad 
  * ,----------------------------------------------------------------------------------------------------.
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+------|
  * |   XXXX  |   *  |   7  |   8  |   9  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |---------+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+------|
- * |     +     |   4  |   5  |   6  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  XXXX     | 
+ * |   XXXX    |   +  |   4  |   5  |   6  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  XXXX     | 
  * |-----------+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+-----------|
  * |     0        |   -  |   1  |   2  |   3  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |       XXXX    | 
  * |---------+----+----+-+------++-----+------+------+------+-----------+-+------+------+-+------+------|
@@ -93,10 +93,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `----------------------------------------------------------------------------------------------------'
  */
 [_NUM] = LAYOUT_60_ansi(
-    KC_NLCK, KC_PSLS, KC_PSLS,  KC_PEQL,   KC_PDOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, KC_PAST, KC_P7,    KC_P8,     KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_PPLS, KC_P4,   KC_P5,    KC_P6,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_P0,   KC_PMNS, KC_P1,    KC_P2,     KC_P3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
-    KC_BSPC, KC_DEL,  XXXXXXX,  KC_PENT,   XXXXXXX, XXXXXXX, _______, XXXXXXX
+  KC_NLCK, KC_PSLS, KC_PSLS, KC_PEQL, KC_PDOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_PAST, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_PPLS, KC_P4,   KC_P5,   KC_P6,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_P0,   KC_PMNS, KC_P1,   KC_P2,   KC_P3,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, 
+  KC_BSPC, KC_DEL,  XXXXXXX, KC_PENT, XXXXXXX, XXXXXXX, _______, XXXXXXX
 )
 };
