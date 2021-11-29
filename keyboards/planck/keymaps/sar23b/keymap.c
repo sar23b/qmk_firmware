@@ -15,8 +15,12 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _ADJUST,
+  // specials
   _NUMPAD,
   _MOUSE,
+  _MUSIC,
+  _MUSCTL,
+  _GAME,
   // stage 2 layer
   _KEEP,
   _UNICODE
@@ -26,7 +30,11 @@ enum planck_keycodes {
   NUMPAD = SAFE_RANGE,
   MOUSE,
   EXT_NUM,
-  EXT_MSE
+  EXT_MSE,
+  MUSIC,
+  EXT_MSC,
+  GAME,
+  EST_GME
 };
 
 enum unicode_names {
@@ -78,6 +86,7 @@ const uint32_t PROGMEM unicode_map[] = {
 #define COPY LCTL(KC_C)
 #define CUT LCTL(KC_X)
 #define PASTE LCTL(KC_V)
+#define MSCTRL MO(_MUSCTL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
