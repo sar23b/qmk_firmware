@@ -31,8 +31,6 @@ enum planck_keycodes {
   MOUSE,
   EXT_NUM,
   EXT_MSE,
-  MUSIC,
-  EXT_MSC,
   GAME,
   EST_GME
 };
@@ -55,7 +53,10 @@ enum unicode_names {
     SAUWIA,
     DOLPI,
     WHALE,
-    CATPIL
+    CATPIL,
+    NAILS,
+    TURTLE,
+    BUTFLY
 };
 
 const uint32_t PROGMEM unicode_map[] = {
@@ -76,7 +77,10 @@ const uint32_t PROGMEM unicode_map[] = {
     [SAUWIA] = 0x1f995, // 🦕
     [DOLPI] = 0x1f42c, // 🐬
     [WHALE] = 0x1f40b, // 🐋
-    [CATPIL] = 0x1f41b // 🐛
+    [CATPIL] = 0x1f41b, // 🐛
+    [NAILS] = 0x1f485l, // 💅
+    [TURTLE] = 0x1f422, // 🐢
+    [BUTFLY] = 0x1f98b // 🦋
 };
 
 #define LOWER MO(_LOWER)
@@ -174,7 +178,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_1x2uC( //keeb control
-    MUSIC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
+    MU_ON,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,          _______, AU_ON,    AU_OFF,  RESET,   _______
@@ -218,25 +222,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Unicode
  * ,-----------------------------------------------------------------------------------.
- * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  |  🐢  | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  |  🦋  | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ZWJ |  🏳  |  🐍  |  🌨  |  😶  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |  ZWJ |  🏳  |  💅  |  🌨  |  😶  |  🐍  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift| XXXX | XXXX | XXXX | XXXX |    🐬/🐋    |      | XXXX | XXXX | XXXX |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_UNICODE] = LAYOUT_planck_1x2uC( //unicode char layer
-    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(ZWJ),  X(FLAG),  X(SNEK),   X(SNOW),   X(NMOF),   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XP(DOLPI,WHALE),    _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
+    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  X(TURTLE), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), X(BUTFLY), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    X(ZWJ),  X(FLAG),  X(NAILS),  X(SNOW),   X(NMOF),   X(SNEK),   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XP(DOLPI,WHALE),      _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
 ),
 
 /* Music
  * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Toggl|MSCTRL|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |MSCTRL|
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -254,20 +258,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Music control
  * ,-----------------------------------------------------------------------------------.
- * | Exit | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | Exit | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX | XXXX | XXXX | XXXX | CYCLE| XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX | XXXX | XXXX | XXXX |  REC |     STOP    | PLAY | FAST | SLOW | XXXX | XXXX |
  * `-----------------------------------------------------------------------------------'
  */
 [_MUSCTL] = LAYOUT_planck_1x2uC( //Music map control layer
-    EXT_MSC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MU_TOG,  _______,
+    MU_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MU_MOD,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,          KC_LGUI,    KC_UP,   KC_DOWN, XXXXXXX, XXXXXXX
 )
 
 /* Layout 
@@ -367,19 +371,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
 
-    case MUSIC:
+    case MU_ON:
         if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(plover_song);
-            #endif
             layer_off(_RAISE);
             layer_off(_LOWER);
             layer_off(_KEEP);
             layer_off(_ADJUST);
             layer_on(_MUSIC);
         }
-        return false;
+        return true;
+        break;
+
+    case MU_OFF:
+        if (record->event.pressed) {
+            layer_off(_MUSIC);
+            layer_off(_MUSCTL);
+        }
+        return true;
         break;
 
     case EXT_MSE:
@@ -389,18 +397,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 PLAY_SONG(off_short);
             #endif
             layer_off(_MOUSE);
-        }
-        return false;
-        break;
-
-    case EXT_MSC:
-        if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(off_short);
-            #endif
-            layer_off(_MUSIC);
-            layer_off(_MUSCTL);
         }
         return false;
         break;
