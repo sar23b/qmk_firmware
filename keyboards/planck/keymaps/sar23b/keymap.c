@@ -8,6 +8,7 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
+#include "unicodemap.h"
 
 enum planck_layers {
   // basic layers
@@ -32,57 +33,11 @@ enum planck_keycodes {
   EXT_NUM,
   EXT_MSE,
   GAME,
-  EST_GME
+  EXT_GME
 };
 
-enum unicode_names {
-    SNEK,
-    ZWJ,
-    VS16,
-    FLAG,
-    TRANS,
-    GAY,
-    GLITT,
-    PHEART,
-    UPDF,
-    NMOF,
-    FLKE,
-    SNOW,
-    UNICRN,
-    PENGU,
-    SAUWIA,
-    DOLPI,
-    WHALE,
-    CATPIL,
-    NAILS,
-    TURTLE,
-    BUTFLY
-};
 
-const uint32_t PROGMEM unicode_map[] = {
-    [ZWJ] = 0x200D, // Zero Width Joiner
-    [VS16] = 0xFE0F, // Variation Selector-16
-    [SNEK]  = 0x1F40D, // 🐍
-    [FLAG] = 0x1F3F3, // 🏳
-    [TRANS] = 0x26A7, // ⚧
-    [GAY] = 0x1F308, // 🌈
-    [GLITT] = 0x2728, // ✨
-    [PHEART] = 0x1F49C, // 💜
-    [UPDF] = 0x1F643, // 🙃
-    [NMOF] = 0x1F636, // 😶
-    [FLKE] = 0x2744, // ❄
-    [SNOW] = 0x1F328, // 🌨
-    [UNICRN] = 0x1f984, // 🦄
-    [PENGU] = 0x1f427, // 🐧
-    [SAUWIA] = 0x1f995, // 🦕
-    [DOLPI] = 0x1f42c, // 🐬
-    [WHALE] = 0x1f40b, // 🐋
-    [CATPIL] = 0x1f41b, // 🐛
-    [NAILS] = 0x1f485l, // 💅
-    [TURTLE] = 0x1f422, // 🐢
-    [BUTFLY] = 0x1f98b // 🦋
-};
-
+// some shortcuts for readabilty
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define SUPENT LGUI_T(KC_ENT)
@@ -304,6 +259,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _KEEP);
     state = update_tri_layer_state(state, _ADJUST, _RAISE, _UNICODE);
+    
+    // set backlight based on active layer
     switch (get_highest_layer(state)) {
     case _RAISE:
         rgblight_setrgb (0x00, 0x00, 0xFF);
@@ -341,6 +298,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+
+    // Activate Numpad layer
     case NUMPAD:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
@@ -356,6 +315,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
     
+    // Go into mouse Mode
     case MOUSE:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
@@ -371,6 +331,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
 
+    // Music Mode on and activate Music layer
     case MU_ON:
         if (record->event.pressed) {
             layer_off(_RAISE);
@@ -382,6 +343,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
         break;
 
+    // Turn MM of and return to default
     case MU_OFF:
         if (record->event.pressed) {
             layer_off(_MUSIC);
@@ -390,6 +352,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
         break;
 
+    // Exit Mouse mode
     case EXT_MSE:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
@@ -401,6 +364,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
 
+    // Exit numpad layer
     case EXT_NUM:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
