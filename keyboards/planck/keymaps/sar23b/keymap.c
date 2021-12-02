@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Music| XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
+ * | Game | XXXX | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_planck_1x2uC( //keeb control
     MU_ON,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
+    GAME,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,          _______, AU_ON,    AU_OFF,  RESET,   _______
 ),
@@ -226,7 +226,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MU_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MU_MOD,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,          KC_LGUI,    KC_UP,   KC_DOWN, XXXXXXX, XXXXXXX
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,          KC_LGUI, KC_UP,   KC_DOWN, XXXXXXX, XXXXXXX
+),
+
+/* Game 
+ * ,-----------------------------------------------------------------------------------.
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    | XXXX | XXXX | XXXX | XXXX | Exit |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_GAME] = LAYOUT_planck_1x2uC( //layout for gaming
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_GME 
 )
 
 /* Layout 
@@ -286,6 +304,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _MUSIC:
         rgblight_setrgb (0x00, 0x80, 0x80);
         break;
+    case _GAME:
+        rgblight_setrgb (0xFF, 0x00, 0xF0);
+        break;
     case _MUSCTL:
         rgblight_setrgb (0x00, 0x40, 0x80);
         break;
@@ -315,6 +336,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
     
+    // Exit numpad layer
+    case EXT_NUM:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(off_short);
+            #endif
+            layer_off(_NUMPAD);
+        }
+        return false;
+        break;
+
     // Go into mouse Mode
     case MOUSE:
         if (record->event.pressed) {
@@ -327,6 +360,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(_KEEP);
             layer_off(_ADJUST);
             layer_on(_MOUSE);
+        }
+        return false;
+        break;
+
+    // Exit Mouse mode
+    case EXT_MSE:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(off_short);
+            #endif
+            layer_off(_MOUSE);
         }
         return false;
         break;
@@ -352,29 +397,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
         break;
 
-    // Exit Mouse mode
-    case EXT_MSE:
+    // enter Game mode
+    case GAME:
         if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(off_short);
-            #endif
-            layer_off(_MOUSE);
+            layer_off(_RAISE);
+            layer_off(_LOWER);
+            layer_off(_KEEP);
+            layer_off(_ADJUST);
+            layer_on(_GAME);
         }
         return false;
         break;
 
-    // Exit numpad layer
-    case EXT_NUM:
+    // Exit Game Mode 
+    case EXT_GME:
         if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-                stop_all_notes();
-                PLAY_SONG(off_short);
-            #endif
-            layer_off(_NUMPAD);
+            layer_off(_GAME);
         }
         return false;
         break;
+
   }
   return true;
 }
