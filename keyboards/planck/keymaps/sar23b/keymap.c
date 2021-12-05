@@ -22,6 +22,8 @@ enum planck_layers {
   _MUSIC,
   _MUSCTL,
   _GAME,
+  _LIGHT,
+  _SONG,
   // stage 2 layer
   _KEEP,
   _UNICODE
@@ -32,8 +34,29 @@ enum planck_keycodes {
   MOUSE,
   EXT_NUM,
   EXT_MSE,
+  LIGHT,
+  EXT_LGT,
   GAME,
-  EXT_GME
+  EXT_GME,
+  SONG,
+  EXT_SNG,
+  // color test keycodes
+  xff8000,
+  xffff00,
+  x7fff00,
+  x00ff7f,
+  x007fff,
+  x00ffff,
+  x8080ff,
+  xc080ff,
+  x4e019b,
+  x0b019b,
+  x144efc,
+  x14c2fc,
+  xeabe0e,
+  x5e4d08,
+  xd4fc76,
+  x85ad1f
 };
 
 
@@ -123,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust 
  * ,-----------------------------------------------------------------------------------.
- * | Music| XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
+ * | Music| Light| XXXX | XXXX | XXXX | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Game | XXXX | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
+ * | Game | Song | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -133,8 +156,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_planck_1x2uC( //keeb control
-    MU_ON,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
-    GAME,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
+    MU_ON,   LIGHT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
+    GAME,    SONG,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,          _______, AU_ON,    AU_OFF,  RESET,   _______
 ),
@@ -245,6 +268,42 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_GME 
+),
+
+/* RGB light test mode 
+ * ,-----------------------------------------------------------------------------------.
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    | XXXX | XXXX | XXXX | XXXX | Exit |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_LIGHT] = LAYOUT_planck_1x2uC( // mode to test out colors
+    XXXXXXX, xff8000, x00ff7f, x8080ff, x0b019b, xeabe0e, x85ad1f, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, xffff00, x007fff, xc080ff, x144efc, x5e4d08, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, x7fff00, x00ffff, x4e019b, x14c2fc, xd4fc76, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_LGT 
+),
+
+/* Song test mode 
+ * ,-----------------------------------------------------------------------------------.
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    | XXXX | XXXX | XXXX | XXXX | Exit |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_SONG] = LAYOUT_planck_1x2uC( // testing songs
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_SNG
 )
 
 /* Layout 
@@ -272,6 +331,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   float plover_gb_song[][2]  = SONG(PLOVER_GOODBYE_SOUND);
   float on_short[][2] = SONG(STARTUP_SOUND);
   float off_short[][2] = SONG(GOODBYE_SOUND);
+  float test_long[][2] = SONG(FANTASIE_IMPROMPTU);
+  float song_song[][2] = SONG(PLANCK_SOUND);
+  float song_song_end[][2] = SONG(PREONIC_SOUND);
 #endif
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -309,6 +371,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         break;
     case _MUSCTL:
         rgblight_setrgb (0x00, 0x40, 0x80);
+        break;
+    case _SONG:
+        rgblight_setrgb (0xFF, 0x80, 0x00);
         break;
     default: //  for any other layers, or the default layer
         rgblight_setrgb (0x00,  0x00, 0x00);
@@ -417,6 +482,143 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
         break;
 
+    // Enter RGB Test control mode
+    case LIGHT:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(test_long);
+            #endif
+            layer_off(_RAISE);
+            layer_off(_LOWER);
+            layer_off(_KEEP);
+            layer_off(_ADJUST);
+            layer_on(_LIGHT);
+        }
+        return false;
+        break;
+
+    // Exit RGB control mode 
+    case EXT_LGT:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(test_long);
+            #endif
+            layer_off(_LIGHT);
+        }
+        return false;
+        break;
+
+    // Songt test mode 
+    case SONG:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(song_song);
+            #endif
+            layer_off(_RAISE);
+            layer_off(_LOWER);
+            layer_off(_KEEP);
+            layer_off(_ADJUST);
+            layer_on(_SONG);
+        }
+        return false;
+        break;
+
+    // Exit song mode
+    case EXT_SNG:
+        if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+                stop_all_notes();
+                PLAY_SONG(song_song_end);
+            #endif
+            layer_off(_SONG);
+        }
+        return false;
+        break;
+
+    // color test buttons
+
+    case xff8000:
+        rgblight_setrgb (0xff, 0x80, 0x00);
+        return false;
+        break;
+
+    case xffff00:
+        rgblight_setrgb (0xff, 0xff, 0x00);
+        return false;
+        break;
+
+    case x7fff00:
+        rgblight_setrgb (0x7f, 0xff, 0x00);
+        return false;
+        break;
+
+    case x00ff7f:
+        rgblight_setrgb (0x00, 0x7f, 0xff);
+        return false;
+        break;
+
+    case x007fff:
+        rgblight_setrgb (0x00, 0x7f, 0xff);
+        return false;
+        break;
+
+    case x00ffff:
+        rgblight_setrgb (0x00, 0xff, 0xff);
+        return false;
+        break;
+
+    case x8080ff:
+        rgblight_setrgb (0x7f, 0x7f, 0xff);
+        return false;
+        break;
+
+    case xc080ff:
+        rgblight_setrgb (0xc0, 0x7f, 0xff);
+        return false;
+        break;
+
+    case x4e019b:
+        rgblight_setrgb (0x4e, 0x01, 0x9b);
+        return false;
+        break;
+
+    case x0b019b:
+        rgblight_setrgb (0x0b, 0x01, 0x9b);
+        return false;
+        break;
+
+    case x144efc:
+        rgblight_setrgb (0x14, 0x4e, 0xfc);
+        return false;
+        break;
+
+    case x14c2fc:
+        rgblight_setrgb (0x14, 0xc2, 0xfc);
+        return false;
+        break;
+
+    case xeabe0e:
+        rgblight_setrgb (0xea, 0xbe, 0x0e);
+        return false;
+        break;
+
+    case x5e4d08:
+        rgblight_setrgb (0x5e, 0x4d, 0x08);
+        return false;
+        break;
+
+    case xd4fc76:
+        rgblight_setrgb (0xd4, 0xfc, 0x76);
+        return false;
+        break;
+
+    case x85ad1f:
+        rgblight_setrgb (0x85, 0xad, 0x1f);
+        return false;
+        break;
   }
   return true;
 }
