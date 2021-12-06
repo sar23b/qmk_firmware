@@ -1,3 +1,6 @@
+#ifndef PLANCK_CUSTOM_KEYCODES_H
+#define PLANCK_CUSTOM_KEYCODES_H
+
 enum planck_layers {
   // basic layers
   _QWERTY,
@@ -48,22 +51,12 @@ enum planck_keycodes {
   S_WHITE,
   S_YELLOW,
   S_OFF,
-  xff8000, // dYellow
-  xffff00, // yellow -- already exsists
-  x7fff00, // chartre -- alredy
-  x00ff7f, // springgreed -- lerdy
-  x007fff, // light blue 
-  x00ffff, // cyan -- alr
-  x8080ff,
-  xc080ff,
-  x4e019b,
-  x0b019b,
-  x144efc,
-  x14c2fc,
-  xeabe0e,
-  x5e4d08,
-  xd4fc76,
-  x85ad1f
+  S_DYELLOW, // dYellow
+  S_LBLUE, // light blue 
+  S_BWHITE, // bwhite 
+  S_CWHITE, // cwhite
+  S_GWHITE, // gwhite 
+  S_CGREEN // cgreen   
 };
 
 
@@ -76,3 +69,5 @@ enum planck_keycodes {
 #define CUT LCTL(KC_X)
 #define PASTE LCTL(KC_V)
 #define MSCTRL MO(_MUSCTL)
+
+#endif /*PLANCK_CUSTOM_KEYCODES_H*/

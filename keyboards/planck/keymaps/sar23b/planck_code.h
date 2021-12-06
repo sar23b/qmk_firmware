@@ -1,3 +1,8 @@
+#ifndef PLANCK_CODE_H
+#define PLANCK_CODE_H
+
+#include "custom_colors.h"
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _KEEP);
     state = update_tri_layer_state(state, _ADJUST, _RAISE, _UNICODE);
@@ -32,10 +37,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_setrgb (RGB_MAGENTA);
         break;
     case _MUSCTL:
-        rgblight_setrgb (0x00, 0x40, 0x80);
+        rgblight_setrgb (RGB_BTEAL);
         break;
     case _SONG:
-        rgblight_setrgb (0xFF, 0x80, 0x00);
+        rgblight_setrgb (RGB_DYELLOW);
         break;
     default: //  for any other layers, or the default layer
         rgblight_setrgb (RGB_OFF);
@@ -212,83 +217,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     // color test buttons
 
-    case xff8000:
-        rgblight_setrgb (0xff, 0x80, 0x00);
+    case S_DYELLOW:
+        rgblight_setrgb (RGB_DYELLOW);
         return false;
         break;
 
-    case xffff00:
-        rgblight_setrgb (0xff, 0xff, 0x00);
+    case S_LBLUE:
+        rgblight_setrgb (RGB_LBLUE);
         return false;
         break;
 
-    case x7fff00:
-        rgblight_setrgb (0x7f, 0xff, 0x00);
+    case S_BWHITE:
+        rgblight_setrgb (RGB_BWHITE);
         return false;
         break;
 
-    case x00ff7f:
-        rgblight_setrgb (0x00, 0x7f, 0xff);
+    case S_CWHITE:
+        rgblight_setrgb (RGB_CWHITE);
         return false;
         break;
 
-    case x007fff:
-        rgblight_setrgb (0x00, 0x7f, 0xff);
+    case S_GWHITE:
+        rgblight_setrgb (RGB_GWHITE);
         return false;
         break;
 
-    case x00ffff:
-        rgblight_setrgb (0x00, 0xff, 0xff);
-        return false;
-        break;
-
-    case x8080ff:
-        rgblight_setrgb (0x7f, 0x7f, 0xff);
-        return false;
-        break;
-
-    case xc080ff:
-        rgblight_setrgb (0xc0, 0x7f, 0xff);
-        return false;
-        break;
-
-    case x4e019b:
-        rgblight_setrgb (0x4e, 0x01, 0x9b);
-        return false;
-        break;
-
-    case x0b019b:
-        rgblight_setrgb (0x0b, 0x01, 0x9b);
-        return false;
-        break;
-
-    case x144efc:
-        rgblight_setrgb (0x14, 0x4e, 0xfc);
-        return false;
-        break;
-
-    case x14c2fc:
-        rgblight_setrgb (0x14, 0xc2, 0xfc);
-        return false;
-        break;
-
-    case xeabe0e:
-        rgblight_setrgb (0xea, 0xbe, 0x0e);
-        return false;
-        break;
-
-    case x5e4d08:
-        rgblight_setrgb (0x5e, 0x4d, 0x08);
-        return false;
-        break;
-
-    case xd4fc76:
-        rgblight_setrgb (0xd4, 0xfc, 0x76);
-        return false;
-        break;
-
-    case x85ad1f:
-        rgblight_setrgb (0x85, 0xad, 0x1f);
+    case S_CGREEN:
+        rgblight_setrgb (RGB_CGREEN);
         return false;
         break;
 
@@ -390,3 +345,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+#endif /* PLANCK_CODE_H */

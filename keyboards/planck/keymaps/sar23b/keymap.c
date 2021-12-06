@@ -8,6 +8,7 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
+#include "custom_colors.h"
 #include "unicodemap.h"
 #include "planck_custom_keycodes.h"
 #include "planck_code.h"
@@ -224,10 +225,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LIGHT] = LAYOUT_planck_1x2uC( // mode to test out colors
-    XXXXXXX, xff8000, x00ff7f, x8080ff, x0b019b, xeabe0e, x85ad1f, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, xffff00, x007fff, xc080ff, x144efc, x5e4d08, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, x7fff00, x00ffff, x4e019b, x14c2fc, xd4fc76, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_LGT 
+    XXXXXXX, S_DYELLOW, S_LBLUE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       S_ORANGE, S_GOLDENROD, S_GOLD,  S_AZURE,      S_OFF,
+    XXXXXXX, S_BWHITE,  S_CWHITE, XXXXXXX, XXXXXXX, XXXXXXX, S_RED,         S_PINK,   S_GREEN,     S_CYAN,  S_BLUE,       XXXXXXX,
+    XXXXXXX, S_GWHITE,  S_CGREEN, XXXXXXX, XXXXXXX, XXXXXXX, S_SPRINGGREEN, S_PURPLE, S_MAGENTA,   S_CORAL, S_CHARTREUSE, XXXXXXX,
+    XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,                S_TEAL,   S_TURQUOISE, S_WHITE, S_YELLOW,     EXT_LGT 
 ),
 
 /* Song test mode 
