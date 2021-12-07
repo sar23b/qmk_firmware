@@ -8,7 +8,6 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-#include "custom_colors.h"
 #include "unicodemap.h"
 #include "planck_custom_keycodes.h"
 #include "planck_code.h"
