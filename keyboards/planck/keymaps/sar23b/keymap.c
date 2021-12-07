@@ -196,20 +196,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Game 
  * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | ESC  | Tab  |   Q  |   W  |   E  |   R  | XXXX | XXXX | XXXX | XXXX | XXXX | Play |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX | Ctrl |   A  |   S  |   D  |   F  | XXXX |  Del | Home |  pUP | XXXX | Prev |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX | Shift|   Z  |   X  |   C  |   V  | XXXX |  Ins |  End | pDown| XXXX | Next |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX |     XXXX    | XXXX | XXXX | XXXX | XXXX | Exit |
+ * | XXXX | Caps | XXXX | XXXX | Alt  |     Space   | XXXX | XXXX | XXXX | XXXX | Exit |
  * `-----------------------------------------------------------------------------------'
  */
 [_GAME] = LAYOUT_planck_1x2uC( //layout for gaming
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_GME 
+    KC_ESC,  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY,
+    XXXXXXX, KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,   XXXXXXX, KC_DEL,  KC_HOME, KC_PGUP, XXXXXXX, KC_MPRV,
+    XXXXXXX, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,   XXXXXXX, KC_INS,  KC_END,  KC_PGDN, XXXXXXX, KC_MNXT,
+    XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX, KC_LALT, KC_SPC,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_GME 
 ),
 
 /* RGB light test mode 

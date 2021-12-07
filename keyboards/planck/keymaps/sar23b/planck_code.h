@@ -1,8 +1,6 @@
 #ifndef PLANCK_CODE_H
 #define PLANCK_CODE_H
 
-#include "custom_colors.h"
-
 layer_state_t layer_state_set_user(layer_state_t state) {
     state = update_tri_layer_state(state, _LOWER, _RAISE, _KEEP);
     state = update_tri_layer_state(state, _ADJUST, _RAISE, _UNICODE);
@@ -22,7 +20,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_setrgb (RGB_RED);
         break;
     case _NUMPAD:
-        rgblight_setrgb (RGB_YELLOW);
+        rgblight_setrgb (RGB_ORANGE);
         break;
     case _MOUSE:
         rgblight_setrgb (RGB_MAGENTA);
@@ -34,7 +32,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         rgblight_setrgb (RGB_TEAL);
         break;
     case _GAME:
-        rgblight_setrgb (RGB_MAGENTA);
+        rgblight_setrgb (RGB_CORAL);
         break;
     case _MUSCTL:
         rgblight_setrgb (RGB_BTEAL);
