@@ -142,20 +142,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Unicode
  * ,-----------------------------------------------------------------------------------.
- * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  |  🐢  | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  | YYYY |  🐢  |  🪐  |  🌃  |  🌉  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  |  🦋  | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  |  🎁  |  🦋  |  🛰  |  🌠  |  🎆  | Entr |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ZWJ |  🏳  |  💅  |  🌨  |  😶  |  🐍  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
+ * |  ZWJ |  🏳  |  💅  |  🌨  |  😶  |  🐍  | YYYY |  👾  |  🌌  |  🔥  |  🌆  | YYYY |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift| XXXX | XXXX | XXXX | XXXX |    🐬/🐋    |      | XXXX | XXXX | XXXX |      |
+ * | Shift| XXXX | XXXX | XXXX | XXXX |    🐬/🐋    |      | XXXX | XXXX |  🌇  |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_UNICODE] = LAYOUT_planck_1x2uC( //unicode char layer
-    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  X(TURTLE), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), X(BUTFLY), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    X(ZWJ),  X(FLAG),  X(NAILS),  X(SNOW),   X(NMOF),   X(SNEK),   XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XP(DOLPI,WHALE),      _______, XXXXXXX, XXXXXXX, XXXXXXX, _______
+    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  XXXXXXX, X(TURTLE), X(SATURN), X(NISTA), X(NBRI),   KC_BSPC,
+    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), X(GIFT), X(BUTFLY), X(SAT),    X(STARS), X(FIRWRK), KC_ENT,
+    X(ZWJ),  X(FLAG),  X(NAILS),  X(SNOW),   X(NMOF),   X(SNEK),   XXXXXXX, X(ALIEN),  X(MIKWAY), X(LIT),   X(CDUSK),  XXXXXXX,
+    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   XP(DOLPI,WHALE),    _______,   XXXXXXX,   XXXXXXX,  X(SUNST),  _______
 ),
 
 /* Music
