@@ -49,6 +49,9 @@ enum unicode_names {
     NISTA,
     NBRI,
 
+    // food
+    WAFLE,
+
     // other
     GIFT
 
@@ -101,6 +104,9 @@ const uint32_t PROGMEM unicode_map[] = {
     [SPAKL] = 0x1f387, // 🎇
     [CDUSK] = 0x1f306, // 🌆
     [SUNST] = 0x1f307, // 🌇
+
+    // food
+    [WAFLE] = 0x1f9c7, // 🧇
 
     // other
     [GIFT] = 0x1f381 // 🎁

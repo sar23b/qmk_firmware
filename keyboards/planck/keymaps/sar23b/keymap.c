@@ -148,14 +148,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  ZWJ |  🏳  |  💅  |  🌨  |  😶  |  🐍  | YYYY |  👾  |  🌌  |  🔥  |  🌆  | YYYY |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift| XXXX | XXXX | XXXX | XXXX |  🐬  |  🐋  |      | XXXX | XXXX |  🌇  |      |
+ * | Shift| XXXX | XXXX |  🧇  | XXXX |  🐬  |  🐋  |      | XXXX | XXXX |  🌇  |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_UNICODE] = LAYOUT_ortho_4x12( //unicode char layer
     XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  XXXXXXX,  X(TURTLE), X(SATURN), X(NISTA), X(NBRI),   KC_BSPC,
     X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), X(GIFT),  X(BUTFLY), X(SAT),    X(STARS), X(FIRWRK), KC_ENT,
     X(ZWJ),  X(FLAG),  X(NAILS),  X(SNOW),   X(NMOF),   X(SNEK),   XXXXXXX,  X(ALIEN),  X(MIKWAY), X(LIT),   X(CDUSK),  XXXXXXX,
-    KC_LSFT, XXXXXXX,  XXXXXXX,   XXXXXXX,   XXXXXXX,   X(DOLPI),  X(WHALE), _______,   XXXXXXX,   XXXXXXX,  X(SUNST),  _______
+    KC_LSFT, XXXXXXX,  X(WAFLE),  XXXXXXX,   XXXXXXX,   X(DOLPI),  X(WHALE), _______,   XXXXXXX,   XXXXXXX,  X(SUNST),  _______
 ),
 
 /* Music
