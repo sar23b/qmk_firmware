@@ -1,21 +1,22 @@
 #include QMK_KEYBOARD_H
-/* mostly copy of dz60rgb_ansi map
- * LCTL of caps, home cluster similar to anne Pro
- * media keys around wasd of layer 1, brigthness on super and alt
+/* using standard qwerty with:
+ * LCTL of caps, Bkspace swap
+ * homecluseter around vim Directions on FN layer
+ * WASD Directions also on FN layer with
+ * media keys around them, brigthness in left corner
+ * ADUST layer in bottom right corner
 */
 
 enum layers {
   _QWERTY,
   _FN,
   _ADJUST,
-  _NUMPAD
 };
 
 // some layer switching aliase
 #define SUPENT LGUI_T(KC_ENT)
 #define ADJUST MO(_ADJUST)
 #define FN MO(_FN)
-#define NUM TG(_NUMPAD)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -29,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+-----------|
  * |   Shift      |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |      Shift    | 
  * |---------+----+----+-+------++-----+------+------+------+-----------+-+------+------+-+------+------|
- * |   CAPS  |   GUI   |    Alt  |                 Space                |  AltG  |   FN   |  NUM |ADJUST| 
+ * |   Play  |   GUI   |    Alt  |                 Space                |  AltG  |   FN   | XXXX |ADJUST| 
  * `----------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_60_ansi(
@@ -37,27 +38,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,   KC_R,    KC_T,  KC_Y,  KC_U, KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSPC,
     KC_LCTL, KC_A,    KC_S,    KC_D,   KC_F,    KC_G,  KC_H,  KC_J, KC_K,    KC_L,   KC_SCLN, KC_QUOT, SUPENT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,   KC_V,    KC_B,  KC_N,  KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,
-    KC_CAPS, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, FN,    NUM,   ADJUST
+    KC_MPLY, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, FN, XXXXXXX,   ADJUST
 ),
 /* FN
  * ,----------------------------------------------------------------------------------------------------.
  * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |         |
  * |------+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+------|
- * |         | Prev |  Up  | Next |      |      |      |      |      |      |      |      |      | Print|
+ * |         | Prev |  Up  | Next | XXXX | XXXX | XXXX |  Del | Home |  PG+ | XXXX | XXXX | XXXX | Print|
  * |---------+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+-+----+------|
- * |           | Left | Down | Right|      |      | Left |  Up  | Down | Right|  PG+ |  Ins |           | 
+ * |           | Left | Down | Right| XXXX | XXXX | Left |  Up  | Down | Right| XXXX | XXXX |           | 
  * |-----------+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+--+---+-----------|
- * |              | Mute | Vol- | Vol+ |      |      |      |  End | Home |  PG- |  Del |               | 
+ * |              | Mute | Vol- | Vol+ | XXXX | XXXX | XXXX |  Ins |  End |  PG- | XXXX |               | 
  * |---------+----+----+-+------++-----+------+------+------+-----------+-+------+------+-+------+------|
- * |   Brt+  |  Brt-   |         |                                      |  Play  |        | Play | XXXX | 
+ * |   Brt+  |  Brt-   |         |                                      |  Print |        | XXXX | XXXX | 
  * `----------------------------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_60_ansi(
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-    _______, KC_MPRV, KC_UP,   KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCR,
-    _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_INS,  KC_PGDN, _______,
-    _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______, _______, KC_END,  KC_HOME, KC_PGUP, KC_DEL,  _______,
-    KC_BRID, KC_BRIU, _______, _______, KC_MPLY, _______, KC_MPLY, XXXXXXX
+    _______, KC_MPRV, KC_UP,   KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_HOME, KC_PGUP, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR,
+    _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_INS,  KC_PGDN, _______,
+    _______, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  KC_END,  KC_PGDN, XXXXXXX, _______,
+    KC_BRID, KC_BRIU, _______, _______, KC_PSCR, _______, XXXXXXX, XXXXXXX
 ),
 /* Adjust
  * ,----------------------------------------------------------------------------------------------------.
