@@ -1,3 +1,5 @@
+#ifndef UNICODE_MAP
+#define UNICODE_MAP
 /* unicode codepoints used on keebs 
  */
 
@@ -111,3 +113,4 @@ const uint32_t PROGMEM unicode_map[] = {
     // other
     [GIFT] = 0x1f381 // 🎁
 };
+#endif 
