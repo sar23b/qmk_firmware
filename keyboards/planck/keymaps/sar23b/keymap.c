@@ -8,7 +8,6 @@
 #include QMK_KEYBOARD_H
 #include "muse.h"
 
-#include "unicodemap.h"
 #include "planck_custom_keycodes.h"
 #include "planck_code.h"
 
@@ -29,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, SUPENT,
     SC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_RSPC,
-    KC_MPLY, KC_LGUI, KC_ESC,  KC_LALT, LOWER,   KC_BSPC, KC_SPC,  RAISE,   KC_RALT, MOUSE,   NUMPAD,  ADJUST
+    KC_MPLY, KC_LGUI, KC_ESC,  KC_LALT, LOWER,   KC_BSPC, KC_SPC,  RAISE,   KC_RALT, XXXXXXX, NUMPAD,  ADJUST
 ),
 
 /* Lower
@@ -98,10 +97,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_ortho_4x12( //keeb control
-    MU_ON,   LIGHT,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_MOD, RGB_RMOD, XXXXXXX, XXXXXXX, KC_SLEP,
-    GAME,    SONG,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUI, RGB_SAI, RGB_VAI,  RGB_SPI, XXXXXXX, KC_WAKE,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_HUD, RGB_SAD, RGB_VAD,  RGB_SPD, XXXXXXX, KC_PWR,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG, RGB_TOG, _______, AU_ON,    AU_OFF,  RESET,   _______
+    MU_ON,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, AU_ON,   AU_OFF,  RESET,   _______
 ),
 
 /* Numpad
@@ -121,132 +120,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_BSPC, KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     KC_LNUM, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT, KC_PENT, XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
 ),
-
-/* Mouse 
- * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M3  |  MU  |  M2  |  MWU |  MWL |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  ML  |  MD  |  MR  |  MWD |  MWR |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M4  |  M5  | CUT  | COPY | PASTE|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |  M1  | Acl3 | Exit | Acl1 | Acl2 |
- * `-----------------------------------------------------------------------------------'
- */
-[_MOUSE] = LAYOUT_ortho_4x12( //mouse layer 
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_MS_U, KC_BTN2, KC_WH_U, KC_WH_L,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_WH_R,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, CUT,     COPY,    PASTE,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN1, KC_ACL0, EXT_MSE, KC_ACL1, KC_ACL2
-),
-
-/* Unicode
- * ,-----------------------------------------------------------------------------------.
- * | XXXX |  ⚧   |  ✨  |  🦄  |  🐛  |  🐧  | YYYY |  🐢  |  🪐  |  🌃  |  🌉  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | VS16 |  🌈  |  💜  |  ❄   |  🙃  |  🦕  |  🎁  |  🦋  |  🛰  |  🌠  |  🎆  | Entr |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |  ZWJ |  🏳  |  💅  |  🌨  |  😶  |  🐍  | YYYY |  👾  |  🌌  |  🔥  |  🌆  | YYYY |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift| XXXX | XXXX |  🧇  | XXXX |  🐬  |  🐋  |      | XXXX | XXXX |  🌇  |      |
- * `-----------------------------------------------------------------------------------'
- */
-[_UNICODE] = LAYOUT_ortho_4x12( //unicode char layer
-    XXXXXXX, X(TRANS), X(GLITT),  X(UNICRN), X(CATPIL), X(PENGU),  XXXXXXX,  X(TURTLE), X(SATURN), X(NISTA), X(NBRI),   KC_BSPC,
-    X(VS16), X(GAY),   X(PHEART), X(FLKE),   X(UPDF),   X(SAUWIA), X(GIFT),  X(BUTFLY), X(SAT),    X(STARS), X(FIRWRK), KC_ENT,
-    X(ZWJ),  X(FLAG),  X(NAILS),  X(SNOW),   X(NMOF),   X(SNEK),   XXXXXXX,  X(ALIEN),  X(MIKWAY), X(LIT),   X(CDUSK),  XXXXXXX,
-    KC_LSFT, XXXXXXX,  X(WAFLE),  XXXXXXX,   XXXXXXX,   X(DOLPI),  X(WHALE), _______,   XXXXXXX,   XXXXXXX,  X(SUNST),  _______
-),
-
-/* Music
- * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |MSCTRL|
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * `-----------------------------------------------------------------------------------'
- */
-[_MUSIC] = LAYOUT_ortho_4x12( //Music map layer
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MSCTRL,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-),
-
-/* Music control
- * ,-----------------------------------------------------------------------------------.
- * | Exit | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | CYCLE| XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX |  REC | STOP | STOP | PLAY | FAST | SLOW | XXXX | XXXX |
- * `-----------------------------------------------------------------------------------'
- */
-[_MUSCTL] = LAYOUT_ortho_4x12( //Music map control layer
-    MU_OFF,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MI_MOD,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT, KC_LALT, KC_LGUI, KC_UP,   KC_DOWN, XXXXXXX, XXXXXXX
-),
-
-/* Game 
- * ,-----------------------------------------------------------------------------------.
- * | ESC  | Tab  |   Q  |   W  |   E  |   R  | XXXX | XXXX | XXXX | XXXX | XXXX | Play |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | Ctrl |   A  |   S  |   D  |   F  | XXXX |  Del | Home |  pUP | XXXX | Prev |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | Shift|   Z  |   X  |   C  |   V  | XXXX |  Ins |  End | pDown| XXXX | Next |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | Caps | XXXX | XXXX | Alt  | Spce | Spce | XXXX | XXXX | XXXX | XXXX | Exit |
- * `-----------------------------------------------------------------------------------'
- */
-[_GAME] = LAYOUT_ortho_4x12( //layout for gaming
-    KC_ESC,  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY,
-    XXXXXXX, KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,   XXXXXXX, KC_DEL,  KC_HOME, KC_PGUP, XXXXXXX, KC_MPRV,
-    XXXXXXX, KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,   XXXXXXX, KC_INS,  KC_END,  KC_PGDN, XXXXXXX, KC_MNXT,
-    XXXXXXX, KC_CAPS, XXXXXXX, XXXXXXX, KC_LALT, KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_GME 
-),
-
-/* RGB light test mode 
- * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Exit |
- * `-----------------------------------------------------------------------------------'
- */
-[_LIGHT] = LAYOUT_ortho_4x12( // mode to test out colors
-    XXXXXXX, S_DYELLOW, S_LBLUE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       S_ORANGE, S_GOLDENROD, S_GOLD,  S_AZURE,      S_OFF,
-    XXXXXXX, S_BWHITE,  S_CWHITE, XXXXXXX, XXXXXXX, XXXXXXX, S_RED,         S_PINK,   S_GREEN,     S_CYAN,  S_BLUE,       XXXXXXX,
-    XXXXXXX, S_GWHITE,  S_CGREEN, XXXXXXX, XXXXXXX, XXXXXXX, S_SPRINGGREEN, S_PURPLE, S_MAGENTA,   S_CORAL, S_CHARTREUSE, XXXXXXX,
-    XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,       S_TEAL,   S_TURQUOISE, S_WHITE, S_YELLOW,     EXT_LGT 
-),
-
-/* Song test mode 
- * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Exit |
- * `-----------------------------------------------------------------------------------'
- */
-[_SONG] = LAYOUT_ortho_4x12( // testing songs
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, EXT_SNG
-)
 
 /* Layout 
  * ,-----------------------------------------------------------------------------------.
