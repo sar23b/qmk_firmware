@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | Disp+| Disp-|      |      | XXXX | XXXX |      | XXXX | XXXX | XXXX |      |
  * `-----------------------------------------------------------------------------------'
- */
+ */ //todo: whait what ich hab da links arrowkeys??
 [_RAISE] = LAYOUT_ortho_4x12( //navigation
     XXXXXXX, KC_MPRV, KC_UP,   KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
     _______, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, KC_LGUI,
@@ -87,17 +87,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust 
  * ,-----------------------------------------------------------------------------------.
- * | Music| Light| XXXX | XXXX | XXXX | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Mode+| Mode-| XXXX | XXXX | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Game | Song | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
+ * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Hue+ | Sat+ | Brt+ | Spd+ | XXXX | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Hue- | Sat- | Brt- | Spd- | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | RGB  |      | AUD1 | AUD0 | Reset|      |
  * `-----------------------------------------------------------------------------------'
- */
+ */ 
 [_ADJUST] = LAYOUT_ortho_4x12( //keeb control
-    MU_ON,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, AU_ON,   AU_OFF,  RESET,   _______
