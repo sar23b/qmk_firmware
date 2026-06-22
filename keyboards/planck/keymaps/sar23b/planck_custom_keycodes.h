@@ -9,15 +9,12 @@ enum planck_layers {
   _LOWER,
   _RAISE,
   _ADJUST,
-  // specials
-  _NUMPAD,
   // stage 2 layer
   _KEEP,
 };
 
 enum planck_keycodes {
-  NUMPAD = SAFE_RANGE,
-  EXT_NUM,
+  ADJUST = SAFE_RANGE,
 };
 
 
@@ -25,6 +22,5 @@ enum planck_keycodes {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define SUPENT LGUI_T(KC_ENT)
-#define ADJUST MO(_ADJUST)
 
 #endif /*PLANCK_CUSTOM_KEYCODES_H*/

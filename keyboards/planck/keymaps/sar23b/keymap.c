@@ -21,14 +21,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Play |  GUI | Esc  | Alt  |Lower | Spce | Spce |Raise | AltG | XXXX | Num  | Adju |
+ * | Play |  GUI | Esc  | Alt  |Lower | Spce | Spce |Raise | AltG | XXXX | XXXX | Adju |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_4x12( 
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, SUPENT,
     SC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SC_RSPC,
-    KC_MPLY, KC_LGUI, KC_ESC,  KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, XXXXXXX, NUMPAD,  ADJUST
+    KC_MPLY, KC_LGUI, KC_ESC,  KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, XXXXXXX, XXXXXXX,  ADJUST
 ),
 
 // todo: maybe capslock here for apple keyboard? 
@@ -89,38 +89,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust 
  * ,-----------------------------------------------------------------------------------.
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Sleep|
+ * | Tab  | XXXX |   7  |   8  |   9  | XXXX | XXXX | BootL| Make | RBoot| XXXX | Sleep|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Wake |
+ * | XXXX |   *  |   4  |   5  |   6  |   +  | XXXX | XXXX | XXXX | XXXX | XXXX | Wake |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | Power|
+ * | Bksp |   /  |   1  |   2  |   3  |   -  | XXXX | XXXX | XXXX | XXXX | XXXX | Power|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |      | AUD1 | AUD0 | Reset|      |
+ * | Lock | XXXX | XXXX |   .  |   0  |  Ent |  Ent | XXXX | AUD1 | AUD0 | XXXX |      |
  * `-----------------------------------------------------------------------------------'
- */   //todo: maybe number pad controls here? or rgb controls? or both? or something else?
+ */   //numpad and system controls
 [_ADJUST] = LAYOUT_ortho_4x12( //keeb control
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_SLEP,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, AU_ON,   AU_OFF,  RESET,   _______
-),
-
-/* Numpad
- * ,-----------------------------------------------------------------------------------.
- * | Tab  | XXXX |   7  |   8  |   9  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | XXXX |   *  |   4  |   5  |   6  |   +  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Bksp |   /  |   1  |   2  |   3  |   -  | XXXX | XXXX | XXXX | XXXX | XXXX | XXXX |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Lock | XXXX | XXXX |   .  |   0  |  Ent |  Ent | XXXX | XXXX | XXXX | Exit | XXXX |
- * `-----------------------------------------------------------------------------------'
- */
-[_NUMPAD] = LAYOUT_ortho_4x12( 
-    KC_TAB,  XXXXXXX, KC_P7,   KC_P8,   KC_P9,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, KC_PAST, KC_P4,   KC_P5,   KC_P6,   KC_PPLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_BSPC, KC_PSLS, KC_P1,   KC_P2,   KC_P3,   KC_PMNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    KC_LNUM, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0,   KC_PENT, KC_PENT, XXXXXXX, XXXXXXX, XXXXXXX, EXT_NUM, XXXXXXX
+    KC_TAB,  XXXXXXX, KC_P7,   KC_P8,   KC_P9, XXXXXXX, XXXXXXX, QK_BOOT, QK_MAKE, QK_RBT, XXXXXXX, KC_SLEP,
+    XXXXXXX, KC_PAST, KC_P4,   KC_P5,   KC_P6, KC_PPLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_WAKE,
+    KC_BSPC, KC_PSLS, KC_P1,   KC_P2,   KC_P3, KC_PMNS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PWR,
+    KC_LNUM, XXXXXXX, XXXXXXX, KC_PDOT, KC_P0, KC_PENT, KC_PENT, XXXXXXX, AU_ON,   AU_OFF,  XXXXXXX, _______
 ),
 
 /* Layout 

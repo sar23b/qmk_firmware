@@ -21,9 +21,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _ADJUST:
         rgblight_setrgb (RGB_RED);
         break;
-    case _NUMPAD:
-        rgblight_setrgb (RGB_ORANGE);
-        break;
     default: //  for any other layers, or the default layer
         rgblight_setrgb (RGB_OFF);
         break;
@@ -45,29 +42,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
     // Activate Numpad layer
-    case NUMPAD:
+    case ADJUST:
         if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
                 stop_all_notes();
                 PLAY_SONG(on_short);
             #endif
-            layer_off(_RAISE);
-            layer_off(_LOWER);
-            layer_off(_KEEP);
-            layer_off(_ADJUST);
-            layer_on(_NUMPAD);
-        }
-        return false;
-        break;
-    
-    // Exit numpad layer
-    case EXT_NUM:
-        if (record->event.pressed) {
+            layer_on(_ADJUST);
+        } else {
             #ifdef AUDIO_ENABLE
                 stop_all_notes();
                 PLAY_SONG(off_short);
             #endif
-            layer_off(_NUMPAD);
+            layer_off(_ADJUST);
         }
         return false;
         break;
